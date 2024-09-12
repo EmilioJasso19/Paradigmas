@@ -4,16 +4,19 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Maestro extends Usuario {
-
-    // Atributos
-
+    //Atributos
     private int numPersonal;
     private String especialidad;
 
-    // Constructor
 
+    //Constructor
+    public Maestro(String nombre,String correo, String telefono, int numPersonal, String especialidad) {
+        super(nombre, correo, telefono);
+        this.numPersonal = numPersonal;
+        this.especialidad = especialidad;
+    }
 
-    // Getters & Setters
+    //Getters y Setters
     public int getNumPersonal() {
         return numPersonal;
     }
@@ -21,6 +24,7 @@ public class Maestro extends Usuario {
     public void setNumPersonal(int numPersonal) {
         this.numPersonal = numPersonal;
     }
+
 
     public String getEspecialidad() {
         return especialidad;
@@ -30,15 +34,14 @@ public class Maestro extends Usuario {
         this.especialidad = especialidad;
     }
 
-    // Comportamientos - Métodos
-    public void mostrarID() {
-        System.out.println("ID: " + numPersonal);
-    }
-
     ArrayList<TutoriasDisponibles> tutoriasDisponibles = new ArrayList<>();
 
-    public void addCursoDisponible(Date fecha, String hora) {
+    public void addTutoriasDisponible(Date fecha, String hora){
         tutoriasDisponibles.add(new TutoriasDisponibles(fecha, hora));
+    }
+
+    public ArrayList<TutoriasDisponibles> getTutoriasDisponibles() {
+        return tutoriasDisponibles;
     }
 
     public void showCursoDisponible() {
@@ -52,7 +55,8 @@ public class Maestro extends Usuario {
         private Date fecha;
         private String hora;
 
-        public TutoriasDisponibles(Date fecha, String hora) {
+
+        TutoriasDisponibles(Date fecha, String hora) {
             this.fecha = fecha;
             this.hora = hora;
         }
@@ -80,6 +84,16 @@ public class Maestro extends Usuario {
         public void setHora(String hora) {
             this.hora = hora;
         }
+
+        @Override
+        public String toString() {
+            return "Fecha: " + fecha + ", Hora: " + hora + "\n";
+        }
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + ", Numero de personal: " + this.getNumPersonal() +
+                "\nLos cursos disponibles son:\n" + tutoriasDisponibles.toString() + "\n";
+    }
 }

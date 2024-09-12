@@ -1,16 +1,19 @@
 package POO;
 
-public class Estudiante {
+import java.util.SplittableRandom;
+import POO.Usuario;
 
+
+public class Estudiante extends Usuario {
     private String matricula;
-    private String telefono;
     private String semestre;
 
-    public Estudiante(String matricula, String telefono, String semestre) {
+    public Estudiante(String nombre, String correo, String telefono, String matricula, String semestre) {
+        super(nombre, correo, telefono);
         this.matricula = matricula;
-        this.telefono = telefono;
         this.semestre = semestre;
     }
+
 
     public String getMatricula() {
         return matricula;
@@ -20,13 +23,6 @@ public class Estudiante {
         this.matricula = matricula;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
 
     public String getSemestre() {
         return semestre;
@@ -34,5 +30,10 @@ public class Estudiante {
 
     public void setSemestre(String semestre) {
         this.semestre = semestre;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Matricula: " + matricula + ", Semestre: " + semestre;
     }
 }
