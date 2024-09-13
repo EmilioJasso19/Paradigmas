@@ -1,11 +1,20 @@
 package POO.UI;
 
+import POO.model.Estudiante;
+import POO.model.Maestro;
+import POO.model.Secretaria;
+import static POO.UI.UIEstudiante.estudianteMenu;
+import static POO.UI.UIMaestro.maestroMenu;
+import static POO.UI.UISecretaria.secretariaMenu;
+import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class UIMenu {
 
-    public final static String[] MESES = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
-            "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+    public static ArrayList<Maestro> maestros = new ArrayList<>();
+    public static ArrayList<Estudiante> estudiantes = new ArrayList<>();
+    public static ArrayList<Secretaria> secretarias = new ArrayList<>();
 
     public static void mostrarMenu() {
         System.out.println("..:: Bienvenido ::..");
@@ -21,10 +30,13 @@ public class UIMenu {
             respuesta = Integer.parseInt(in.nextLine());
             switch (respuesta) {
                 case 1:
-                    System.out.println("..:: Maestros ::..");
+                    loginUsuario(1);
                     break;
                 case 2:
                     estudianteMenu();
+                    break;
+                case 3:
+                    secretariaMenu();
                     break;
                 case 0:
                     System.out.println("..:: Bye ::..");
@@ -35,35 +47,26 @@ public class UIMenu {
         } while (respuesta != 0);
     }
 
-    public static void estudianteMenu() {
-        int respuesta;
+    public static void loginUsuario(int tipoUsuario) {
 
-        do {
-            System.out.println("..:: Estudiantes ::..");
-            System.out.println("1. Agendar tutoría");
-            System.out.println("2. Mis tutorías");
-            System.out.println("0. Cancelar");
+        // Maestro 1
+        // Estudiante 2
+        // Secretaria 3
 
-            Scanner in = new Scanner(System.in);
-            respuesta = Integer.parseInt(in.nextLine());
-            switch (respuesta) {
-                case 1:
-                    System.out.println("..:: Agendar tutoría ::..");
-                    System.out.println("Selecciona una opcion");
-                    for (int i = 1; i < MESES.length; i++) {
-                        System.out.println(i + ". " + MESES[i]);
-                    }
-                    break;
-                case 2:
-                    System.out.println("..:: Mis tutorías ::..");
-                    break;
-                case 0:
-                    System.out.println("..:: Bye ::..");
-                    break;
-                default:
-                    System.out.println("Por favor selecciona una opcion valida");
+        System.out.println("Ingresa tu correo");
+        Scanner sc = new Scanner(System.in);
+        String correo = sc.nextLine();
+
+
+        if (tipoUsuario == 1) {
+            for (Maestro maestro : maestros) {
+                if (maestro.getCorreo().equals(correo)) {
+                    // Maestro con acceso
+                    System.out.println("Hola " + maestro.getNombre());
+                    maestroMenu();
+                }
             }
-        } while (respuesta != 0);
+        }
     }
 
 }

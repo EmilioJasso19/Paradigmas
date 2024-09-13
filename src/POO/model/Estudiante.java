@@ -1,15 +1,12 @@
-package POO;
-
-import java.util.SplittableRandom;
-import POO.Usuario;
+package POO.model;
 
 
 public class Estudiante extends Usuario {
     private String matricula;
     private String semestre;
 
-    public Estudiante(String nombre, String correo, String telefono, String matricula, String semestre) {
-        super(nombre, correo, telefono);
+    public Estudiante(String nombre, String correo, String matricula, String semestre) {
+        super(nombre, correo);
         this.matricula = matricula;
         this.semestre = semestre;
     }

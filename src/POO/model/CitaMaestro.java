@@ -1,5 +1,4 @@
-import POO.Estudiante;
-import POO.Maestro;
+package POO.model;
 
 import java.util.Date;
 
