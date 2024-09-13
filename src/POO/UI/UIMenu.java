@@ -15,6 +15,9 @@ public class UIMenu {
     public static ArrayList<Maestro> maestros = new ArrayList<>();
     public static ArrayList<Estudiante> estudiantes = new ArrayList<>();
     public static ArrayList<Secretaria> secretarias = new ArrayList<>();
+    public static Maestro maestroLogueado;
+    public static Estudiante estudianteLogueado;
+    public static Secretaria secretariaLogueada;
 
     public static void mostrarMenu() {
         System.out.println("..:: Bienvenido ::..");
@@ -53,20 +56,44 @@ public class UIMenu {
         // Estudiante 2
         // Secretaria 3
 
-        System.out.println("Ingresa tu correo");
-        Scanner sc = new Scanner(System.in);
-        String correo = sc.nextLine();
+        boolean bandera = true;
+        do {
+            System.out.println("Ingresa tu correo");
+            Scanner sc = new Scanner(System.in);
+            String correo = sc.nextLine();
 
 
-        if (tipoUsuario == 1) {
-            for (Maestro maestro : maestros) {
-                if (maestro.getCorreo().equals(correo)) {
-                    // Maestro con acceso
-                    System.out.println("Hola " + maestro.getNombre());
-                    maestroMenu();
+            if (tipoUsuario == 1) {
+                for (Maestro maestro : maestros) {
+                    if (maestro.getCorreo().equals(correo)) {
+                        // Maestro con acceso
+                        bandera = false;
+                        maestroLogueado = maestro;
+                        maestroMenu();
+                    }
                 }
             }
-        }
+            if (tipoUsuario == 2) {
+                for (Estudiante estudiante : estudiantes) {
+                    if (estudiante.getCorreo().equals(correo)) {
+                        bandera = false;
+                        System.out.println("Hola " + estudiante.getNombre());
+                        estudianteLogueado = estudiante;
+                        estudianteMenu();
+                    }
+                }
+            }
+            if (tipoUsuario == 3) {
+                for (Secretaria secretaria : secretarias) {
+                    if (secretaria.getCorreo().equals(correo)) {
+                        bandera = false;
+                        System.out.println("Hola " + secretaria.getNombre());
+                        secretariaLogueada = secretaria;
+                        secretariaMenu();
+                    }
+                }
+            }
+        } while (bandera);
     }
 
 }
