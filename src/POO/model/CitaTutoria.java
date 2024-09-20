@@ -10,7 +10,6 @@ public class CitaTutoria {
     private String hora;
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-
     CitaTutoria(String fecha, String hora) {
         try {
             this.fecha = formato.parse(fecha);
@@ -28,7 +27,7 @@ public class CitaTutoria {
         this.id = id;
     }
 
-    public Date getFecha(Date fecha) {
+    public Date getDate() {
         return this.fecha;
     }
 
