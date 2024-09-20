@@ -1,5 +1,8 @@
 package POO.UI;
 
+import POO.model.CitaTutoria;
+import POO.model.Maestro;
+
 import java.util.Scanner;
 
 public class UIEstudiante {
@@ -20,14 +23,10 @@ public class UIEstudiante {
             respuesta = Integer.parseInt(in.nextLine());
             switch (respuesta) {
                 case 1:
-                    System.out.println("..:: Agendar tutoría ::..");
-                    System.out.println("Selecciona una opcion");
-                    for (int i = 1; i < MESES.length; i++) {
-                        System.out.println(i + ". " + MESES[i]);
-                    }
+                    agendarTutoria();
                     break;
                 case 2:
-                    System.out.println("..:: Mis tutorías ::..");
+                    listarMisTutorias();
                     break;
                 case 0:
                     System.out.println("..:: Bye ::..");
@@ -37,4 +36,22 @@ public class UIEstudiante {
             }
         } while (respuesta != 0);
     }
+
+    private static void agendarTutoria() {
+        System.out.println("..:: Agendar Tutoria ::..");
+
+        // 1. Maestro 1
+        //  1. Tutoria 1
+        //  2. Tutoria 2
+        // 2. Maestro 2
+        //  1. Tutoria 1
+        for (Maestro maestro : UIMenu.maestros) {
+
+        }
+    }
+
+    private static void listarMisTutorias() {
+        System.out.println("..:: Mis tutorías ::..");
+    }
+
 }

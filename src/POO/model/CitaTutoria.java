@@ -1,15 +1,22 @@
 package POO.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CitaTutoria {
     private int id;
     private Date fecha;
     private String hora;
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
 
-    CitaTutoria(Date fecha, String hora) {
-        this.fecha = fecha;
+    CitaTutoria(String fecha, String hora) {
+        try {
+            this.fecha = formato.parse(fecha);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         this.hora = hora;
     }
 
@@ -21,8 +28,12 @@ public class CitaTutoria {
         this.id = id;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFecha(Date fecha) {
+        return this.fecha;
+    }
+
+    public String getFecha() {
+        return formato.format(fecha);
     }
 
     public void setFecha(Date fecha) {

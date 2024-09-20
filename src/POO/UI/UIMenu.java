@@ -33,13 +33,9 @@ public class UIMenu {
             respuesta = Integer.parseInt(in.nextLine());
             switch (respuesta) {
                 case 1:
-                    loginUsuario(1);
-                    break;
                 case 2:
-                    estudianteMenu();
-                    break;
                 case 3:
-                    secretariaMenu();
+                    loginUsuario(respuesta);
                     break;
                 case 0:
                     System.out.println("..:: Bye ::..");
@@ -77,7 +73,7 @@ public class UIMenu {
                 for (Estudiante estudiante : estudiantes) {
                     if (estudiante.getCorreo().equals(correo)) {
                         bandera = false;
-                        System.out.println("Hola " + estudiante.getNombre());
+                        System.out.println("Hola - " + estudiante.getNombre());
                         estudianteLogueado = estudiante;
                         estudianteMenu();
                     }
@@ -87,7 +83,7 @@ public class UIMenu {
                 for (Secretaria secretaria : secretarias) {
                     if (secretaria.getCorreo().equals(correo)) {
                         bandera = false;
-                        System.out.println("Hola " + secretaria.getNombre());
+                        System.out.println("Hola - " + secretaria.getNombre());
                         secretariaLogueada = secretaria;
                         secretariaMenu();
                     }
