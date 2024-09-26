@@ -33,9 +33,14 @@ public class Estudiante extends Usuario {
         this.semestre = semestre;
     }
 
+    public ArrayList<CitaMaestro> getTutoriasAgendadas() {
+        return tutoriasAgendadas;
+    }
+
     public void addTutoriaMaestro(Maestro maestro, Date fecha, String hora) {
-        tutoriasAgendadas.add(new CitaMaestro(maestro, this));
-        tutoriasAgendadas.getLast().agendar(fecha, hora);
+        CitaMaestro citaMaestro = new CitaMaestro(maestro, this);
+        citaMaestro.agendar(fecha, hora);
+        tutoriasAgendadas.add(citaMaestro);
     }
 
     @Override

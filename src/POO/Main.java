@@ -34,7 +34,7 @@ public class Main {
 
         /*secretarias.add(new Secretaria("Lupita", "lupe@secres.uv", "Lis","vespertino"));
         secretarias.add(new Secretaria("Maricarmen", "mmen@secres.uv", "Admin","matutino"));*/
-//        mostrarMenu();
-        UIEstudiante.agendarTutoria();
+        mostrarMenu();
+//        UIEstudiante.agendarTutoria();
     }
 }

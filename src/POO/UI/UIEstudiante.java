@@ -1,7 +1,11 @@
 package POO.UI;
 
+import POO.model.CitaMaestro;
+import POO.model.CitaTutoria;
+import POO.model.Estudiante;
 import POO.model.Maestro;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UIEstudiante {
@@ -71,16 +75,27 @@ public class UIEstudiante {
             } while (respuestaConfirmacion < 1 || respuestaConfirmacion > 2);
 
             if (respuestaConfirmacion == 1) {
-                Maestro.TutoriasDisponibles ts = maestroSeleccionado.getTutoriasDisponibles().get(tutoriaSeleccionada);
+                Maestro.TutoriasDisponibles ts = maestroSeleccionado.getTutoriasDisponibles().get(tutoriaSeleccionada - 1);
                 UIMenu.estudianteLogueado.addTutoriaMaestro(maestroSeleccionado, ts.getDate(), ts.getHora());
             }
 
-        } while (respuestaConfirmacion == 1);
+        } while (respuestaConfirmacion != 1);
 
     }
 
     private static void listarMisTutorias() {
         System.out.println("..:: Mis tutorías ::..");
+
+        ArrayList<CitaMaestro> misTutorias = UIMenu.estudianteLogueado.getTutoriasAgendadas();
+
+        if (!misTutorias.isEmpty()) {
+            for (CitaMaestro citaMaestro : misTutorias) {
+                System.out.println(misTutorias.indexOf(citaMaestro) + 1 + ". "
+                        + citaMaestro.getMaestro().getNombre() + ": " + citaMaestro.getFecha() + " - " + citaMaestro.getHora());
+            }
+        } else {
+            System.out.println("No hay tutorias agendadas :/");
+        }
     }
 
 }
